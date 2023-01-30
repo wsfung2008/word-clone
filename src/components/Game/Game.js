@@ -1,7 +1,9 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import { sample } from '../../utils';
 import { WORDS } from '../../data';
+import GuessInput from '../GuessInput';
+import GuessList from '../GuessList';
 
 // Pick a random word on every pageload.
 const answer = sample(WORDS);
@@ -9,7 +11,18 @@ const answer = sample(WORDS);
 console.info({ answer });
 
 function Game() {
-  return <>Put a game here!</>;
+
+  const [guessList, setGuessList] = useState([]);
+  const addNewGuess = (newGuess)=>{
+    setGuessList(guessList.concat(newGuess));
+  }
+
+  return (
+    <>
+      <GuessList guessList={guessList}/>
+      <GuessInput addNewGuess={addNewGuess}/>
+    </>
+  );
 }
 
 export default Game;
