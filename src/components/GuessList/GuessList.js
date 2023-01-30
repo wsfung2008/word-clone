@@ -1,4 +1,5 @@
 import React from "react";
+import GuessRow from "../GuessRow";
 
 function GuessList({guessList}) {
   
@@ -6,8 +7,7 @@ function GuessList({guessList}) {
     <div class="guess-results">
       {
         guessList.map(guess=>
-          <p key={guess} class="guess">{guess}</p>
-        )
+          <GuessRow guess={guess}/>)
       }
     </div>
   );
