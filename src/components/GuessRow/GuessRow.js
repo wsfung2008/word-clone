@@ -1,13 +1,13 @@
 import React from "react";
 import { range } from "../../utils";
-import { NUM_OF_GUESSES_ALLOWED } from "../../constants";
+import { NUM_OF_GUESSES_ALLOWED, ANSWER } from "../../constants";
 import { checkGuess } from "../../game-helpers";
 
 const rangeTo5 = range(1, NUM_OF_GUESSES_ALLOWED, 1);
 
 function GuessRow({guess}) {
 
-  const result = checkGuess(guess, 'RANGE');
+  const result = checkGuess(guess, ANSWER);
   console.log('result'+result);
   
   return (
