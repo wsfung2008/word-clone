@@ -1,17 +1,22 @@
 import React from "react";
 import { range } from "../../utils";
 import { NUM_OF_GUESSES_ALLOWED } from "../../constants";
+import { checkGuess } from "../../game-helpers";
 
 const rangeTo5 = range(1, NUM_OF_GUESSES_ALLOWED, 1);
 
 function GuessRow({guess}) {
+
+  const result = checkGuess(guess, 'RANGE');
+  console.log('result'+result);
   
   return (
     <p class="guess">
       {
-        rangeTo5.map((index)=>
-          <span key={index} class="cell">{guess[index] || ' '}</span>
-        )
+        rangeTo5.map((element, index)=>{
+          
+          return <span key={index} class={`cell ${result[index]?.status}`}>{guess[index] || ' '}</span>
+        })
       }
     </p>
   );
